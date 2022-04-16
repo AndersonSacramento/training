@@ -1,4 +1,11 @@
 (defun day-1-part-1 (floor-cmds)
+  "Return the final floor given a string of floor-cmds
+   ( -> up   +1
+   ) -> down -1
+  For example:
+              ()()(( ->  2
+              ))((   ->  0
+              ))))(  -> -3"
   (loop for cmd across floor-cmds
         if (string= "(" cmd)
         sum 1
@@ -9,6 +16,13 @@
 
 
 (defun day-1-part-1 (floor-cmds)
+  "Return the final floor given a string of floor-cmds
+   ( -> up   +1
+   ) -> down -1
+  For example:
+              ()()(( ->  2
+              ))((   ->  0
+              ))))(  -> -3"
   (reduce #'+ (map 'list #'(lambda (cmd)
                           (cond ((string= cmd "(") 1)
                                 ((string= cmd ")") -1)
@@ -17,6 +31,13 @@
 
 
 (defun day-1-part-2 (floor-cmds)
+  "Return the position, counting from 1, that the elevator reaches
+   the floor -1 given a string of floor-cmds
+   ( -> up   +1
+   ) -> down -1
+   For example:
+               (()))()(  -> 5
+               ())()     -> 3"
   (loop for cmd across floor-cmds
         for i = 1 then (1+ i)
         if (string= "(" cmd)
